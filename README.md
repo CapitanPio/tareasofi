@@ -11,7 +11,7 @@ Informe educativo sobre rendimiento académico y colocación laboral de estudian
 
 1. [Abrir el notebook en Colab](https://colab.research.google.com/github/CapitanPio/tareasofi/blob/main/reporte_rendimiento_estudiantil.ipynb).
 2. Ejecutar las celdas en orden. La primera instala las librerías necesarias.
-3. Dejar `ruta_csv_local` vacía para descargar el dataset con KaggleHub. Para usar un CSV subido manualmente, escribir su ruta, por ejemplo `/content/student_dataset_10000_rows.csv`.
+3. La celda de carga descarga el dataset con KaggleHub.
 4. Completar los nombres de integrantes y la fecha de entrega de la portada antes de descargar el notebook.
 
 ## Ejecutar el código Python
@@ -21,7 +21,7 @@ python -m pip install kagglehub pandas numpy matplotlib seaborn scikit-learn ipy
 python codigo_por_puntos.py
 ```
 
-Para usar una copia local del dataset, completar `ruta_csv_local` en el archivo antes de ejecutarlo. La instalación requiere acceso a los paquetes; la descarga del dataset requiere acceso a Kaggle.
+La instalación requiere acceso a los paquetes; la descarga del dataset requiere acceso a Kaggle.
 
 ## Datos y metodología
 
@@ -29,14 +29,14 @@ Se utiliza [Student Performance Prediction Dataset](https://www.kaggle.com/datas
 
 El CSV llama `attendance` y `previous_score` a las variables que la pauta denomina `Attendance Percentage` y `Previous Scores`. El código normaliza los nombres y resuelve esas dos diferencias sin modificar los valores.
 
-Se divide la muestra en 80 % de entrenamiento y 20 % de prueba, con semilla 42 y estratificación por colocación laboral. La imputación y la estandarización se ajustan exclusivamente con entrenamiento. Se mantienen seis predictores y se compara cada modelo con una referencia sencilla.
+Se divide la muestra en 80 % de entrenamiento y 20 % de prueba, con semilla 42 y estratificación por colocación laboral. La estandarización se ajusta exclusivamente con entrenamiento. No se imputan datos porque no hay valores faltantes. Se mantienen seis predictores y se compara cada modelo con una referencia sencilla.
 
 ## Resultados de la ejecución revisada
 
 | Modelo | Resultados en prueba |
 |---|---|
 | Regresión lineal | MAE: 6,917 puntos; RMSE: 8,791 puntos; R²: 0,653. |
-| Regresión logística | Accuracy: 90,65 %; precision: 93,09 %; recall: 95,93 %. |
+| Regresión logística | Accuracy: 90,65 %; precisión de colocados: 93,09 %; sensibilidad de colocados: 95,93 %; especificidad de no colocados: 63,83 %. |
 
 Los porcentajes de clasificación se calcularon con los conteos de la matriz de confusión. La clase positiva es colocado.
 
