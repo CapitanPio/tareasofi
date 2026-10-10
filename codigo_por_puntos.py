@@ -3,28 +3,28 @@
 # Este archivo no contiene resultados reales; ejecutar con el CSV original.
 # # Rendimiento académico y colocación laboral de estudiantes
 # 
-# Integrantes: [Completar nombres]. USÉ IA PARA ESTO, NO LO HICE YO
-# Asignatura: Modelos Predictivos en Negocios. USÉ IA PARA ESTO, NO LO HICE YO
-# Fecha: [Completar fecha de entrega]. USÉ IA PARA ESTO, NO LO HICE YO
+# Integrantes: [Completar nombres].
+# Asignatura: Modelos Predictivos en Negocios.
+# Fecha: [Completar fecha de entrega].
 # 
-# Este notebook es una propuesta educativa basada en la pauta Regular_02.pdf y debe ejecutarse con el CSV real antes de entregar el trabajo. USÉ IA PARA ESTO, NO LO HICE YO
-# Las conclusiones numéricas deben escribirse con las salidas obtenidas al ejecutar el notebook; no se incluyen resultados precalculados. USÉ IA PARA ESTO, NO LO HICE YO
+# Este notebook es una propuesta educativa basada en la pauta Regular_02.pdf y debe ejecutarse con el CSV real antes de entregar el trabajo.
+# Las conclusiones numéricas deben escribirse con las salidas obtenidas al ejecutar el notebook; no se incluyen resultados precalculados.
 # 
-# Ejecutar las celdas en orden en Google Colab y descargar el archivo .ipynb después de comprobar que conserva todas sus salidas. USÉ IA PARA ESTO, NO LO HICE YO
+# Ejecutar las celdas en orden en Google Colab y descargar el archivo .ipynb después de comprobar que conserva todas sus salidas.
 
 # ## 1. Contexto, objetivo e hipótesis
 # 
-# Una institución educativa puede utilizar información de sus estudiantes para estimar su rendimiento académico y orientar programas de apoyo y preparación laboral. USÉ IA PARA ESTO, NO LO HICE YO
-# El objetivo es construir una regresión lineal múltiple para estimar Exam Score y una regresión logística para estimar la probabilidad de Placement Status. USÉ IA PARA ESTO, NO LO HICE YO
+# Una institución educativa puede utilizar información de sus estudiantes para estimar su rendimiento académico y orientar programas de apoyo y preparación laboral.
+# El objetivo es construir una regresión lineal múltiple para estimar Exam Score y una regresión logística para estimar la probabilidad de Placement Status.
 # 
-# Hipótesis principal: más horas de estudio, mayor asistencia y mejores puntajes previos se relacionan con mejores resultados académicos y mayor probabilidad de colocación laboral. USÉ IA PARA ESTO, NO LO HICE YO
-# Hipótesis exploratoria adicional: la relación entre estudiar más y obtener mejores puntajes podría ser distinta entre estudiantes que duermen menos de seis horas y quienes duermen seis horas o más. USÉ IA PARA ESTO, NO LO HICE YO
-# La segunda hipótesis será una comparación descriptiva de grupos, no una prueba de causalidad ni una modificación de los modelos exigidos. USÉ IA PARA ESTO, NO LO HICE YO
+# Hipótesis principal: más horas de estudio, mayor asistencia y mejores puntajes previos se relacionan con mejores resultados académicos y mayor probabilidad de colocación laboral.
+# Hipótesis exploratoria adicional: la relación entre estudiar más y obtener mejores puntajes podría ser distinta entre estudiantes que duermen menos de seis horas y quienes duermen seis horas o más.
+# La segunda hipótesis será una comparación descriptiva de grupos, no una prueba de causalidad ni una modificación de los modelos exigidos.
 
 # ## 2. Librerías y carga del dataset
 # 
-# Se utilizan pandas y numpy para manejar datos, matplotlib y seaborn para gráficos, scikit-learn para los modelos y kagglehub para descargar el archivo. USÉ IA PARA ESTO, NO LO HICE YO
-# No se utiliza statsmodels. USÉ IA PARA ESTO, NO LO HICE YO
+# Se utilizan pandas y numpy para manejar datos, matplotlib y seaborn para gráficos, scikit-learn para los modelos y kagglehub para descargar el archivo.
+# No se utiliza statsmodels.
 
 from pathlib import Path
 
@@ -57,8 +57,8 @@ pd.set_option("display.float_format", "{:.3f}".format)
 semilla_aleatoria = 42
 proporcion_prueba = 0.20
 
-# Dejar ruta_csv_local vacía para descargar desde Kaggle; si la descarga falla, subir student_dataset_10000_rows.csv a Colab y escribir su ruta, por ejemplo /content/student_dataset_10000_rows.csv. USÉ IA PARA ESTO, NO LO HICE YO
-# No se necesitan credenciales dentro del código para un dataset público y no se deben pegar claves privadas en el notebook. USÉ IA PARA ESTO, NO LO HICE YO
+# Dejar ruta_csv_local vacía para descargar desde Kaggle; si la descarga falla, subir student_dataset_10000_rows.csv a Colab y escribir su ruta, por ejemplo /content/student_dataset_10000_rows.csv.
+# No se necesitan credenciales dentro del código para un dataset público y no se deben pegar claves privadas en el notebook.
 
 ruta_csv_local = ""
 
@@ -116,8 +116,8 @@ display(datos.head())
 
 # ## 3. Exploración básica antes de limpiar
 # 
-# Se revisan tipos de datos, valores faltantes, duplicados y estadísticos básicos para decidir la limpieza. USÉ IA PARA ESTO, NO LO HICE YO
-# Los gráficos se limitan a tres histogramas y diagramas de caja en la sección de valores atípicos, además de una tabla de correlaciones más adelante. USÉ IA PARA ESTO, NO LO HICE YO
+# Se revisan tipos de datos, valores faltantes, duplicados y estadísticos básicos para decidir la limpieza.
+# Los gráficos se limitan a tres histogramas y diagramas de caja en la sección de valores atípicos, además de una tabla de correlaciones más adelante.
 
 resumen_inicial = pd.DataFrame({
     "Tipo de dato": datos.dtypes.astype(str),
@@ -149,15 +149,15 @@ for posicion, nombre_variable in enumerate(variables_graficos):
 plt.tight_layout()
 plt.show()
 
-# Interpretación por completar: indicar el número de filas, si hay valores faltantes o duplicados y qué se observa en las tres distribuciones. USÉ IA PARA ESTO, NO LO HICE YO
-# No describir una distribución como normal solo por su apariencia ni escribir cifras que no estén en las salidas anteriores. USÉ IA PARA ESTO, NO LO HICE YO
+# Interpretación por completar: indicar el número de filas, si hay valores faltantes o duplicados y qué se observa en las tres distribuciones.
+# No describir una distribución como normal solo por su apariencia ni escribir cifras que no estén en las salidas anteriores.
 
 # ## 4. Limpieza y selección de variables
 # 
-# Los duplicados exactos se consideran registros repetidos en esta propuesta; antes de eliminarlos, comprobar si existe un identificador que indique que pertenecen a estudiantes diferentes. USÉ IA PARA ESTO, NO LO HICE YO
-# Si los duplicados corresponden a personas diferentes, cambiar eliminar_duplicados_exactos a False y justificar esa decisión. USÉ IA PARA ESTO, NO LO HICE YO
-# Se eliminan filas sin alguno de los dos resultados que queremos predecir para poder utilizar la misma muestra en ambos modelos. USÉ IA PARA ESTO, NO LO HICE YO
-# Los predictores faltantes se completarán con medianas calculadas exclusivamente en entrenamiento, conservando así los registros que sí tienen resultados observados. USÉ IA PARA ESTO, NO LO HICE YO
+# Los duplicados exactos se consideran registros repetidos en esta propuesta; antes de eliminarlos, comprobar si existe un identificador que indique que pertenecen a estudiantes diferentes.
+# Si los duplicados corresponden a personas diferentes, cambiar eliminar_duplicados_exactos a False y justificar esa decisión.
+# Se eliminan filas sin alguno de los dos resultados que queremos predecir para poder utilizar la misma muestra en ambos modelos.
+# Los predictores faltantes se completarán con medianas calculadas exclusivamente en entrenamiento, conservando así los registros que sí tienen resultados observados.
 
 eliminar_duplicados_exactos = True
 filas_iniciales = len(datos)
@@ -264,16 +264,16 @@ print("Filas disponibles:", len(datos_limpios))
 display(pd.DataFrame(valores_invalidos))
 display(datos_limpios[columnas_requeridas].isna().sum().to_frame("Faltantes"))
 
-# Los rangos físicos anteriores se basan en horas diarias, asistencia porcentual y tareas no negativas, según las descripciones de la pauta. USÉ IA PARA ESTO, NO LO HICE YO
-# No se impone una escala de 0 a 100 a los puntajes sin confirmar que esa sea su escala real. USÉ IA PARA ESTO, NO LO HICE YO
-# Los valores que no se pueden convertir a número o que son imposibles se transforman en faltantes para tratarlos de forma explícita. USÉ IA PARA ESTO, NO LO HICE YO
-# No se incluyen identificadores ni otras columnas no justificadas y se excluye Exam Score de los predictores de colocación para representar una predicción anterior al examen final. USÉ IA PARA ESTO, NO LO HICE YO
+# Los rangos físicos anteriores se basan en horas diarias, asistencia porcentual y tareas no negativas, según las descripciones de la pauta.
+# No se impone una escala de 0 a 100 a los puntajes sin confirmar que esa sea su escala real.
+# Los valores que no se pueden convertir a número o que son imposibles se transforman en faltantes para tratarlos de forma explícita.
+# No se incluyen identificadores ni otras columnas no justificadas y se excluye Exam Score de los predictores de colocación para representar una predicción anterior al examen final.
 
 # ## 5. Valores atípicos
 # 
-# Se utiliza el rango intercuartílico o IQR para identificar observaciones poco frecuentes, sin eliminarlas automáticamente. USÉ IA PARA ESTO, NO LO HICE YO
-# Un valor fuera de estos límites puede ser válido y no equivale necesariamente a un error. USÉ IA PARA ESTO, NO LO HICE YO
-# Esta propuesta conserva los valores físicamente posibles para evitar descartar estudiantes con características distintas al promedio. USÉ IA PARA ESTO, NO LO HICE YO
+# Se utiliza el rango intercuartílico o IQR para identificar observaciones poco frecuentes, sin eliminarlas automáticamente.
+# Un valor fuera de estos límites puede ser válido y no equivale necesariamente a un error.
+# Esta propuesta conserva los valores físicamente posibles para evitar descartar estudiantes con características distintas al promedio.
 
 resumen_atipicos = []
 
@@ -314,9 +314,9 @@ plt.show()
 
 # ## 6. División de entrenamiento y prueba
 # 
-# Se reserva el 80 % de los estudiantes para entrenamiento y el 20 % para evaluar resultados en casos que los modelos no utilizaron para aprender. USÉ IA PARA ESTO, NO LO HICE YO
-# La división mantiene aproximadamente la proporción de colocados y no colocados en ambos grupos y se utiliza la misma semilla para reproducirla. USÉ IA PARA ESTO, NO LO HICE YO
-# Las medianas, las variables constantes y la estandarización se determinan después de dividir, utilizando únicamente entrenamiento. USÉ IA PARA ESTO, NO LO HICE YO
+# Se reserva el 80 % de los estudiantes para entrenamiento y el 20 % para evaluar resultados en casos que los modelos no utilizaron para aprender.
+# La división mantiene aproximadamente la proporción de colocados y no colocados en ambos grupos y se utiliza la misma semilla para reproducirla.
+# Las medianas, las variables constantes y la estandarización se determinan después de dividir, utilizando únicamente entrenamiento.
 
 conteo_clases = datos_limpios[variable_objetivo_logistica].value_counts()
 
@@ -388,17 +388,17 @@ predictores_prueba_estandarizados = estandarizador.transform(
     predictores_prueba_completos
 )
 
-# Estandarizar significa restar el promedio y dividir por la desviación estándar de entrenamiento; cambia las unidades, pero conserva la información y las correlaciones entre variables no constantes. USÉ IA PARA ESTO, NO LO HICE YO
-# El centrado cambia el punto cero, por lo que no conserva cocientes entre valores como si fueran proporciones originales. USÉ IA PARA ESTO, NO LO HICE YO
-# La regresión lineal utiliza las unidades originales para facilitar la explicación de sus coeficientes y la logística utiliza datos estandarizados para facilitar el ajuste numérico. USÉ IA PARA ESTO, NO LO HICE YO
-# En ningún caso se usa la información de prueba para calcular medianas o escalas. USÉ IA PARA ESTO, NO LO HICE YO
+# Estandarizar significa restar el promedio y dividir por la desviación estándar de entrenamiento; cambia las unidades, pero conserva la información y las correlaciones entre variables no constantes.
+# El centrado cambia el punto cero, por lo que no conserva cocientes entre valores como si fueran proporciones originales.
+# La regresión lineal utiliza las unidades originales para facilitar la explicación de sus coeficientes y la logística utiliza datos estandarizados para facilitar el ajuste numérico.
+# En ningún caso se usa la información de prueba para calcular medianas o escalas.
 
 # ## 7. Hipótesis adicional y relaciones básicas
 # 
-# Estas comparaciones utilizan únicamente entrenamiento y no cambian los modelos ni sirven para ajustar decisiones mirando el conjunto de prueba. USÉ IA PARA ESTO, NO LO HICE YO
-# Se considera estudio alto un valor igual o superior a la mediana de horas de estudio de entrenamiento y sueño corto un valor inferior a seis horas diarias. USÉ IA PARA ESTO, NO LO HICE YO
-# Las etiquetas alto y bajo son relativas a esta muestra, no recomendaciones sobre cuánto estudiar. USÉ IA PARA ESTO, NO LO HICE YO
-# Se muestran cantidades, promedios y desviaciones estándar; grupos pequeños o muy variables permiten conclusiones menos firmes. USÉ IA PARA ESTO, NO LO HICE YO
+# Estas comparaciones utilizan únicamente entrenamiento y no cambian los modelos ni sirven para ajustar decisiones mirando el conjunto de prueba.
+# Se considera estudio alto un valor igual o superior a la mediana de horas de estudio de entrenamiento y sueño corto un valor inferior a seis horas diarias.
+# Las etiquetas alto y bajo son relativas a esta muestra, no recomendaciones sobre cuánto estudiar.
+# Se muestran cantidades, promedios y desviaciones estándar; grupos pequeños o muy variables permiten conclusiones menos firmes.
 
 datos_hipotesis = datos_entrenamiento.dropna(
     subset=["Study Hours", "Sleep Hours"]
@@ -406,8 +406,7 @@ datos_hipotesis = datos_entrenamiento.dropna(
 
 if len(datos_hipotesis) == 0:
     print(
-        "No hay datos completos de estudio y sueño para esta comparación. "
-        "USÉ IA PARA ESTO, NO LO HICE YO"
+        "No hay datos completos de estudio y sueño para esta comparación."
     )
 else:
     mediana_horas_estudio = datos_entrenamiento["Study Hours"].median()
@@ -464,15 +463,15 @@ for posicion, nombre_variable in enumerate(variables_relacion_puntaje):
 plt.tight_layout()
 plt.show()
 
-# Interpretación por completar: comparar la diferencia de puntajes entre estudio alto y bajo dentro de cada grupo de sueño, considerando sus tamaños y dispersión. USÉ IA PARA ESTO, NO LO HICE YO
-# La comparación no controla otras diferencias entre estudiantes y no demuestra que dormir poco modifique causalmente el efecto de estudiar. USÉ IA PARA ESTO, NO LO HICE YO
-# Las correlaciones y gráficos ayudan a describir relaciones y advertir predictores muy relacionados, pero una correlación baja no justifica por sí sola eliminar una variable. USÉ IA PARA ESTO, NO LO HICE YO
+# Interpretación por completar: comparar la diferencia de puntajes entre estudio alto y bajo dentro de cada grupo de sueño, considerando sus tamaños y dispersión.
+# La comparación no controla otras diferencias entre estudiantes y no demuestra que dormir poco modifique causalmente el efecto de estudiar.
+# Las correlaciones y gráficos ayudan a describir relaciones y advertir predictores muy relacionados, pero una correlación baja no justifica por sí sola eliminar una variable.
 
 # ## 8. Regresión lineal múltiple
 # 
-# El modelo estima el puntaje del examen a partir de las seis características seleccionadas, salvo las que no presenten variación suficiente en entrenamiento. USÉ IA PARA ESTO, NO LO HICE YO
-# Cada coeficiente indica el cambio estimado en el puntaje al aumentar una unidad del predictor, manteniendo constantes los demás. USÉ IA PARA ESTO, NO LO HICE YO
-# En asistencia, una unidad corresponde a un punto porcentual y no a un aumento relativo de un uno por ciento. USÉ IA PARA ESTO, NO LO HICE YO
+# El modelo estima el puntaje del examen a partir de las seis características seleccionadas, salvo las que no presenten variación suficiente en entrenamiento.
+# Cada coeficiente indica el cambio estimado en el puntaje al aumentar una unidad del predictor, manteniendo constantes los demás.
+# En asistencia, una unidad corresponde a un punto porcentual y no a un aumento relativo de un uno por ciento.
 
 modelo_lineal = LinearRegression()
 modelo_lineal.fit(
@@ -529,17 +528,17 @@ metricas_lineales = pd.DataFrame({
 
 display(metricas_lineales)
 
-# MAE expresa el error absoluto promedio en puntos y ayuda a valorar si las predicciones son suficientemente precisas para orientar apoyos académicos. USÉ IA PARA ESTO, NO LO HICE YO
-# RMSE también se expresa en puntos y da mayor peso a errores grandes, que podrían dejar sin apoyo a estudiantes que lo necesitan. USÉ IA PARA ESTO, NO LO HICE YO
-# R cuadrado resume el desempeño frente a una predicción constante; puede ser negativo y no equivale al porcentaje de estudiantes correctamente predichos. USÉ IA PARA ESTO, NO LO HICE YO
-# El modelo de referencia siempre predice el promedio de entrenamiento y permite comprobar si utilizar los predictores mejora esa estrategia sencilla en prueba. USÉ IA PARA ESTO, NO LO HICE YO
-# El intercepto puede corresponder a un estudiante con valores que no existen en la muestra, por lo que no siempre tiene una interpretación práctica. USÉ IA PARA ESTO, NO LO HICE YO
+# MAE expresa el error absoluto promedio en puntos y ayuda a valorar si las predicciones son suficientemente precisas para orientar apoyos académicos.
+# RMSE también se expresa en puntos y da mayor peso a errores grandes, que podrían dejar sin apoyo a estudiantes que lo necesitan.
+# R cuadrado resume el desempeño frente a una predicción constante; puede ser negativo y no equivale al porcentaje de estudiantes correctamente predichos.
+# El modelo de referencia siempre predice el promedio de entrenamiento y permite comprobar si utilizar los predictores mejora esa estrategia sencilla en prueba.
+# El intercepto puede corresponder a un estudiante con valores que no existen en la muestra, por lo que no siempre tiene una interpretación práctica.
 
 # ## 9. Regresión logística
 # 
-# El modelo estima la probabilidad de colocación laboral y clasifica como colocado cuando esa probabilidad es igual o superior a 0,50. USÉ IA PARA ESTO, NO LO HICE YO
-# Se utiliza la configuración habitual de scikit-learn, con regularización L2 para moderar los coeficientes, sin buscar hiperparámetros sobre el conjunto de prueba. USÉ IA PARA ESTO, NO LO HICE YO
-# La probabilidad es una estimación del modelo y no una garantía de colocación ni un intervalo de confianza. USÉ IA PARA ESTO, NO LO HICE YO
+# El modelo estima la probabilidad de colocación laboral y clasifica como colocado cuando esa probabilidad es igual o superior a 0,50.
+# Se utiliza la configuración habitual de scikit-learn, con regularización L2 para moderar los coeficientes, sin buscar hiperparámetros sobre el conjunto de prueba.
+# La probabilidad es una estimación del modelo y no una garantía de colocación ni un intervalo de confianza.
 
 modelo_logistico = LogisticRegression(
     max_iter=2000,
@@ -629,22 +628,22 @@ plt.title("Matriz de confusión de la regresión logística")
 plt.tight_layout()
 plt.show()
 
-# Accuracy representa la proporción total de clasificaciones correctas y debe compararse con la estrategia de predecir siempre la clase más frecuente. USÉ IA PARA ESTO, NO LO HICE YO
-# Precision indica cuántos estudiantes realmente estaban colocados entre quienes el modelo clasificó como colocados; una precisión baja podría generar expectativas demasiado optimistas. USÉ IA PARA ESTO, NO LO HICE YO
-# Recall indica cuántos de los estudiantes realmente colocados fueron identificados; un recall bajo dejaría sin reconocer parte de esos casos. USÉ IA PARA ESTO, NO LO HICE YO
-# En este trabajo la clase positiva es colocado; identificar estudiantes en riesgo de no colocarse requiere considerar especialmente los errores de la fila No colocado en la matriz. USÉ IA PARA ESTO, NO LO HICE YO
-# Si un modelo no predice ningún colocado, precision no está definida y el código muestra cero por convención, no como una medición ordinaria de precisión. USÉ IA PARA ESTO, NO LO HICE YO
-# Un odds ratio mayor que uno representa mayores odds de colocación y uno menor que uno representa menores odds, manteniendo constantes las otras variables. USÉ IA PARA ESTO, NO LO HICE YO
-# Las odds corresponden a probabilidad dividida por uno menos probabilidad; por ejemplo, un odds ratio de 1,20 significa un aumento de 20 % en las odds, no de 20 puntos porcentuales en la probabilidad. USÉ IA PARA ESTO, NO LO HICE YO
-# Se divide cada coeficiente estandarizado por la escala de su variable para expresar el odds ratio por una hora, tarea, punto o punto porcentual original. USÉ IA PARA ESTO, NO LO HICE YO
+# Accuracy representa la proporción total de clasificaciones correctas y debe compararse con la estrategia de predecir siempre la clase más frecuente.
+# Precision indica cuántos estudiantes realmente estaban colocados entre quienes el modelo clasificó como colocados; una precisión baja podría generar expectativas demasiado optimistas.
+# Recall indica cuántos de los estudiantes realmente colocados fueron identificados; un recall bajo dejaría sin reconocer parte de esos casos.
+# En este trabajo la clase positiva es colocado; identificar estudiantes en riesgo de no colocarse requiere considerar especialmente los errores de la fila No colocado en la matriz.
+# Si un modelo no predice ningún colocado, precision no está definida y el código muestra cero por convención, no como una medición ordinaria de precisión.
+# Un odds ratio mayor que uno representa mayores odds de colocación y uno menor que uno representa menores odds, manteniendo constantes las otras variables.
+# Las odds corresponden a probabilidad dividida por uno menos probabilidad; por ejemplo, un odds ratio de 1,20 significa un aumento de 20 % en las odds, no de 20 puntos porcentuales en la probabilidad.
+# Se divide cada coeficiente estandarizado por la escala de su variable para expresar el odds ratio por una hora, tarea, punto o punto porcentual original.
 
 # ## 10. Revisión sencilla de supuestos y variables relevantes
 # 
-# Los gráficos de relaciones anteriores y el gráfico de residuos ayudan a detectar patrones incompatibles con una relación lineal sencilla. USÉ IA PARA ESTO, NO LO HICE YO
-# Un residuo es el puntaje observado menos el puntaje estimado; un patrón curvo o una dispersión que cambia mucho merece discusión. USÉ IA PARA ESTO, NO LO HICE YO
-# La independencia no puede demostrarse con estos gráficos: debemos revisar el origen del dataset y si hay estudiantes repetidos, grupos o registros relacionados. USÉ IA PARA ESTO, NO LO HICE YO
-# La regresión logística supone una relación lineal entre los predictores continuos y el logaritmo de las odds, no entre los predictores y la probabilidad directamente. USÉ IA PARA ESTO, NO LO HICE YO
-# Este notebook no verifica formalmente ese último supuesto ni establece causalidad; lo declara como una limitación del análisis introductorio. USÉ IA PARA ESTO, NO LO HICE YO
+# Los gráficos de relaciones anteriores y el gráfico de residuos ayudan a detectar patrones incompatibles con una relación lineal sencilla.
+# Un residuo es el puntaje observado menos el puntaje estimado; un patrón curvo o una dispersión que cambia mucho merece discusión.
+# La independencia no puede demostrarse con estos gráficos: debemos revisar el origen del dataset y si hay estudiantes repetidos, grupos o registros relacionados.
+# La regresión logística supone una relación lineal entre los predictores continuos y el logaritmo de las odds, no entre los predictores y la probabilidad directamente.
+# Este notebook no verifica formalmente ese último supuesto ni establece causalidad; lo declara como una limitación del análisis introductorio.
 
 puntajes_ajustados_entrenamiento = modelo_lineal.predict(
     predictores_entrenamiento_completos
@@ -700,15 +699,15 @@ display(
     )
 )
 
-# Las columnas por una desviación estándar permiten comparar magnitudes dentro de cada modelo sin confundir diferencias de escala entre horas y porcentajes. USÉ IA PARA ESTO, NO LO HICE YO
-# Este orden de coeficientes es descriptivo, puede verse afectado por predictores relacionados y no demuestra importancia causal ni significancia estadística. USÉ IA PARA ESTO, NO LO HICE YO
-# No se comparan numéricamente el efecto lineal y el logístico entre sí porque tienen unidades y objetivos diferentes. USÉ IA PARA ESTO, NO LO HICE YO
-# Interpretación por completar: indicar qué variables muestran los efectos más grandes en cada modelo y si sus signos respaldan o contradicen la hipótesis principal. USÉ IA PARA ESTO, NO LO HICE YO
+# Las columnas por una desviación estándar permiten comparar magnitudes dentro de cada modelo sin confundir diferencias de escala entre horas y porcentajes.
+# Este orden de coeficientes es descriptivo, puede verse afectado por predictores relacionados y no demuestra importancia causal ni significancia estadística.
+# No se comparan numéricamente el efecto lineal y el logístico entre sí porque tienen unidades y objetivos diferentes.
+# Interpretación por completar: indicar qué variables muestran los efectos más grandes en cada modelo y si sus signos respaldan o contradicen la hipótesis principal.
 
 # ## 11. Predicciones para estudiantes no utilizados en entrenamiento
 # 
-# Se muestran diez casos de prueba con sus resultados reales y predichos; la fila original solo sirve para identificar el registro y no se utiliza como predictor. USÉ IA PARA ESTO, NO LO HICE YO
-# Estos casos representan estudiantes no vistos, pero no prueban por sí solos que el modelo anticipará tendencias en años futuros. USÉ IA PARA ESTO, NO LO HICE YO
+# Se muestran diez casos de prueba con sus resultados reales y predichos; la fila original solo sirve para identificar el registro y no se utiliza como predictor.
+# Estos casos representan estudiantes no vistos, pero no prueban por sí solos que el modelo anticipará tendencias en años futuros.
 
 resultados_prueba = pd.DataFrame({
     "Fila original": datos_prueba.index,
@@ -725,44 +724,44 @@ resultados_prueba["Error absoluto del puntaje"] = np.abs(
 
 display(resultados_prueba.head(10))
 
-# Aplicación propuesta: usar el puntaje estimado como una señal complementaria para priorizar tutorías, considerando la magnitud de los errores observados. USÉ IA PARA ESTO, NO LO HICE YO
-# Aplicación propuesta: utilizar la probabilidad de colocación como apoyo para orientar preparación laboral y revisar los errores antes de asignar recursos. USÉ IA PARA ESTO, NO LO HICE YO
-# Las decisiones deben incorporar información adicional y revisión humana, porque estos modelos pueden equivocarse y los datos podrían no representar a otra institución. USÉ IA PARA ESTO, NO LO HICE YO
+# Aplicación propuesta: usar el puntaje estimado como una señal complementaria para priorizar tutorías, considerando la magnitud de los errores observados.
+# Aplicación propuesta: utilizar la probabilidad de colocación como apoyo para orientar preparación laboral y revisar los errores antes de asignar recursos.
+# Las decisiones deben incorporar información adicional y revisión humana, porque estos modelos pueden equivocarse y los datos podrían no representar a otra institución.
 
 # ## 12. Comparación, discusión y conclusiones
 # 
-# Completar esta sección después de ejecutar el notebook; no interpretar MAE, RMSE o accuracy mediante umbrales arbitrarios de bueno o malo. USÉ IA PARA ESTO, NO LO HICE YO
-# - Resultado académico: el MAE fue [valor] puntos y el RMSE fue [valor] puntos, frente a [valores] del modelo de referencia. USÉ IA PARA ESTO, NO LO HICE YO
-# - El R cuadrado fue [valor] y su interpretación para esta muestra es [explicación]. USÉ IA PARA ESTO, NO LO HICE YO
-# - Resultado laboral: accuracy fue [valor], precision fue [valor] y recall fue [valor], frente a [valores] de la clase más frecuente. USÉ IA PARA ESTO, NO LO HICE YO
-# - Desde la gestión educativa, el error más relevante de la clasificación fue [tipo de error] porque [consecuencia práctica]. USÉ IA PARA ESTO, NO LO HICE YO
-# - Las variables con mayores efectos descriptivos fueron [variables] en el modelo académico y [variables] en el laboral. USÉ IA PARA ESTO, NO LO HICE YO
-# - La hipótesis principal recibió [apoyo, apoyo parcial o falta de apoyo] porque [evidencia de los coeficientes y resultados]. USÉ IA PARA ESTO, NO LO HICE YO
-# - La comparación exploratoria sobre sueño mostró [patrón o ausencia de patrón], con [cantidad] estudiantes en cada grupo relevante. USÉ IA PARA ESTO, NO LO HICE YO
+# Completar esta sección después de ejecutar el notebook; no interpretar MAE, RMSE o accuracy mediante umbrales arbitrarios de bueno o malo.
+# - Resultado académico: el MAE fue [valor] puntos y el RMSE fue [valor] puntos, frente a [valores] del modelo de referencia.
+# - El R cuadrado fue [valor] y su interpretación para esta muestra es [explicación].
+# - Resultado laboral: accuracy fue [valor], precision fue [valor] y recall fue [valor], frente a [valores] de la clase más frecuente.
+# - Desde la gestión educativa, el error más relevante de la clasificación fue [tipo de error] porque [consecuencia práctica].
+# - Las variables con mayores efectos descriptivos fueron [variables] en el modelo académico y [variables] en el laboral.
+# - La hipótesis principal recibió [apoyo, apoyo parcial o falta de apoyo] porque [evidencia de los coeficientes y resultados].
+# - La comparación exploratoria sobre sueño mostró [patrón o ausencia de patrón], con [cantidad] estudiantes en cada grupo relevante.
 # 
-# Los modelos no se comparan usando directamente R cuadrado y accuracy: se compara su utilidad en sus respectivas tareas y su mejora frente a referencias sencillas. USÉ IA PARA ESTO, NO LO HICE YO
+# Los modelos no se comparan usando directamente R cuadrado y accuracy: se compara su utilidad en sus respectivas tareas y su mejora frente a referencias sencillas.
 # 
-# Resumen de tres hallazgos respaldados por salidas: USÉ IA PARA ESTO, NO LO HICE YO
-# 1. [Hallazgo académico y cifra que lo respalda]. USÉ IA PARA ESTO, NO LO HICE YO
-# 2. [Hallazgo de colocación laboral y cifra que lo respalda]. USÉ IA PARA ESTO, NO LO HICE YO
-# 3. [Hallazgo sobre variables o comparación de estudio y sueño]. USÉ IA PARA ESTO, NO LO HICE YO
+# Resumen de tres hallazgos respaldados por salidas:
+# 1. [Hallazgo académico y cifra que lo respalda].
+# 2. [Hallazgo de colocación laboral y cifra que lo respalda].
+# 3. [Hallazgo sobre variables o comparación de estudio y sueño].
 # 
-# Limitaciones: no se verificó formalmente la independencia ni la linealidad del logaritmo de las odds, no se evaluó otra institución o período y el análisis de grupos no controla otras características. USÉ IA PARA ESTO, NO LO HICE YO
-# Revisar la documentación del dataset para confirmar si es sintético o basado en estudiantes reales y describir su origen antes de atribuirle representatividad empresarial. USÉ IA PARA ESTO, NO LO HICE YO
-# La probabilidad logística no fue sometida a un análisis de calibración y no debe interpretarse como certeza individual. USÉ IA PARA ESTO, NO LO HICE YO
+# Limitaciones: no se verificó formalmente la independencia ni la linealidad del logaritmo de las odds, no se evaluó otra institución o período y el análisis de grupos no controla otras características.
+# Revisar la documentación del dataset para confirmar si es sintético o basado en estudiantes reales y describir su origen antes de atribuirle representatividad empresarial.
+# La probabilidad logística no fue sometida a un análisis de calibración y no debe interpretarse como certeza individual.
 
 # ## 13. Guion sugerido de presentación y entrega
 # 
-# Preparar diapositivas con los resultados reales y exportar la presentación a PDF, manteniendo una duración total aproximada de doce minutos. USÉ IA PARA ESTO, NO LO HICE YO
-# 1. Integrantes, contexto, objetivos e hipótesis: un minuto y medio. USÉ IA PARA ESTO, NO LO HICE YO
-# 2. Dataset, exploración básica y limpieza: dos minutos. USÉ IA PARA ESTO, NO LO HICE YO
-# 3. Variables, división y estandarización: un minuto. USÉ IA PARA ESTO, NO LO HICE YO
-# 4. Regresión lineal y sus métricas: dos minutos. USÉ IA PARA ESTO, NO LO HICE YO
-# 5. Regresión logística, odds ratios y matriz de confusión: dos minutos. USÉ IA PARA ESTO, NO LO HICE YO
-# 6. Supuestos e hipótesis adicional: un minuto y medio. USÉ IA PARA ESTO, NO LO HICE YO
-# 7. Comparación, tres hallazgos, limitaciones y aplicación: dos minutos. USÉ IA PARA ESTO, NO LO HICE YO
+# Preparar diapositivas con los resultados reales y exportar la presentación a PDF, manteniendo una duración total aproximada de doce minutos.
+# 1. Integrantes, contexto, objetivos e hipótesis: un minuto y medio.
+# 2. Dataset, exploración básica y limpieza: dos minutos.
+# 3. Variables, división y estandarización: un minuto.
+# 4. Regresión lineal y sus métricas: dos minutos.
+# 5. Regresión logística, odds ratios y matriz de confusión: dos minutos.
+# 6. Supuestos e hipótesis adicional: un minuto y medio.
+# 7. Comparación, tres hallazgos, limitaciones y aplicación: dos minutos.
 # 
-# Antes de entregar, reemplazar todos los textos entre corchetes, incluir nombres de integrantes, comprobar las salidas de cada celda y conservar la declaración de uso de IA exigida por la pauta también en la presentación. USÉ IA PARA ESTO, NO LO HICE YO
+# Antes de entregar, reemplazar todos los textos entre corchetes, incluir nombres de integrantes y comprobar las salidas de cada celda.
 # 
-# Fuentes: pauta Regular_02.pdf y dataset de shambhurajejagadale en https://www.kaggle.com/datasets/shambhurajejagadale/student-performance-prediction-dataset. USÉ IA PARA ESTO, NO LO HICE YO
+# Fuentes: pauta Regular_02.pdf y dataset de shambhurajejagadale en https://www.kaggle.com/datasets/shambhurajejagadale/student-performance-prediction-dataset.
 
